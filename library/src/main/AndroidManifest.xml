@@ -1,0 +1,70 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sigma.beaconcontrol.beaconsdk">
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:required="false" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true">
+
+        <receiver android:name="org.altbeacon.beacon.startup.StartupBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="org.altbeacon.beacon.service.BeaconService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false"
+            android:label="beacon" />
+
+
+        <service
+            android:name="org.altbeacon.beacon.BeaconIntentProcessor"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name="org.altbeacon.beacon.service.ScanJob"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".backend.service.BeaconSDKService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.sigma.beaconcontrol.beaconsdk.BeaconSDKService.ACTION" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".backend.service.BeaconActionProcessor"
+            android:exported="true" />
+
+        <service
+            android:name=".backend.service.BeaconConfigurationChangeProcessor"
+            android:exported="true" />
+
+        <service
+            android:name=".backend.service.BeaconProximityChangeProcessor"
+            android:exported="true" />
+
+    </application>
+</manifest>

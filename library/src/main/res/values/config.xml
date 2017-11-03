@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="beacon_sdk_config_connect_timeout_seconds">15</integer>
+    <integer name="beacon_sdk_config_read_timeout_seconds">20</integer>
+    <integer name="beacon_sdk_config_write_timeout_seconds">20</integer>
+    <integer name="beacon_sdk_config_max_running_services">1000</integer>
+    <integer name="beacon_sdk_config_leave_msg_delay_millis">15000</integer>
+    <integer name="beacon_sdk_config_foreground_scan_duration_millis">2000</integer>
+    <integer name="beacon_sdk_config_foreground_pause_duration_millis">5000</integer>
+    <integer name="beacon_sdk_config_background_scan_duration_millis">2000</integer>
+    <integer name="beacon_sdk_config_background_pause_duration_millis">20000</integer>
+    <integer name="beacon_sdk_config_events_sendout_timeout_seconds">180</integer>
+
+    <string name="beacon_sdk_config_service_scheme">http</string>
+    <string name="beacon_sdk_config_service_base_url">10.0.0.7:8090/api/v1/beacon-control/mobile</string>
+    <string name="beacon_sdk_config_iBeacon_parser_layout">m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25</string>
+
+</resources>

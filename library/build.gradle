@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 26
+        consumerProguardFiles 'consumer-proguard-rules.pro'
+    }
+
+    lintOptions {
+        lintConfig file("config/quality/lint/lint.xml")
+    }
+
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    buildscript {
+        repositories {
+            jcenter()
+        }
+        dependencies {
+            classpath 'org.altbeacon:android-beacon-library:2.12.3'
+            classpath group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'org.altbeacon:android-beacon-library:2.12.3'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+}
+
+
